@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildirim Simülasyonu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bildirim Simülasyonu</h1>
+    <p>Bu sayfa, her 5 saniyede bir bildirim gönderecek.</p>
+
+    <script>
+        // Bildirim izni almak
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+
+        // Sürekli bildirim göndermek
+        function sendNotification() {
+            if (Notification.permission === "granted") {
+                new Notification("Dikkat!", {
+                    body: "Virüs simülasyonu çalışıyor! Lütfen bilgisayarınızı kontrol edin.",
+                    icon: "https://www.example.com/icon.png" // İcon eklemek isterseniz
+                });
+            }
+        }
+
+        // Her 5 saniyede bir bildirim gönder
+        setInterval(sendNotification, 5000);
+    </script>
+</body>
+</html>
